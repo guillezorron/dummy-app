@@ -1,7 +1,8 @@
 FROM gitpod/workspace-mysql
 USER gitpod
 
-# Install Ruby version 2.6.3 and set it as default
+# Install the Ruby version specified in '.ruby-version'
+COPY --chown=gitpod:gitpod .ruby-version /tmp
 RUN echo "rvm_gems_path=/home/gitpod/.rvm" > ~/.rvmrc
-RUN bash -lc "rvm install ruby-2.6.3 && rvm use 2.6.3"
+RUN bash -lc "rvm install ruby-$(cat /tmp/.ruby-version) && rvm use ruby-$(cat /tmp/.ruby-version) --default"
 RUN echo "rvm_gems_path=/workspace/.rvm" > ~/.rvmrc
