@@ -1,6 +1,6 @@
 
 image:
-  file: .gitpod.Dockerfile
+  file: gitpod/workspace-mysql
 
 ports:
   # Rails server
